@@ -1,5 +1,4 @@
 import argparse
-import logging
 
 import arrow
 
@@ -7,12 +6,7 @@ from utils.constant import DATASET_ID
 from utils.constant import TABLE_ID
 from utils.crawler import BoxOfficeCrawler
 from utils.date import validate_dateformat
-
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="[%(levelname)s %(asctime)s %(name)s] %(message)s",
-)
+from utils.logger import Logger
 
 
 def make_parser():
@@ -33,7 +27,7 @@ def make_parser():
 
 if __name__ == "__main__":
 
-    logger = logging.getLogger(__name__)
+    logger = Logger(__name__).get_logger()
     crawler = BoxOfficeCrawler()
 
     # cli argments
